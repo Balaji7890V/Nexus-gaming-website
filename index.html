@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS GAMES — Ultimate Gaming Universe</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="scanlines"></div>
+
+  <!-- NOTIFICATION BAR -->
+  <div class="notif-bar" id="notifBar">
+    🔥 SUMMER TOURNAMENT 2025 — $50,000 PRIZE POOL — REGISTRATION OPEN NOW!
+    <button class="notif-close" onclick="document.getElementById('notifBar').style.display='none'">✕</button>
+  </div>
+
+  <!-- GLOBAL NAVIGATION -->
+  <nav class="global-nav">
+    <div class="nav-logo" onclick="goToPage(1)">NEXUS⚡GAMES</div>
+    <ul class="nav-links">
+      <li><button onclick="goToPage(1)" id="nav1" class="active">HOME</button></li>
+      <li><button onclick="goToPage(2)" id="nav2">GAMES</button></li>
+      <li><button onclick="goToPage(3)" id="nav3">LEADERBOARD</button></li>
+      <li><button onclick="goToPage(4)" id="nav4">STORE</button></li>
+      <li><button onclick="goToPage(5)" id="nav5">TOURNAMENTS</button></li>
+      <li><button onclick="goToPage(6)" id="nav6">COMMUNITY</button></li>
+      <li><button onclick="goToPage(7)" id="nav7">NEWS</button></li>
+      <li><button onclick="goToPage(8)" id="nav8">PROFILE</button></li>
+      <li><button onclick="goToPage(9)" id="nav9">ABOUT</button></li>
+      <li><button onclick="goToPage(10)" id="nav10">CONTACT</button></li>
+    </ul>
+  </nav>
+
+  <!-- ==========================================
+     PAGE 1 — HOME
+========================================== -->
+  <div id="page1" class="page active">
+
+    <!-- VIDEO HERO SECTION -->
+    <section class="video-hero">
+      <div class="video-slider" id="videoSlider">
+
+        <!-- SLIDE 1: SPACE SHOOTER -->
+        <div class="video-slide video-bg-1">
+          <div class="game-visual">
+            <div class="stars-bg" id="starsContainer"></div>
+            <div class="spaceship">
+              <div class="spaceship-body"></div>
+            </div>
+          </div>
+          <div class="video-overlay"></div>
+          <div class="video-content">
+            <div class="hero-badge">📡 NOW PLAYING · VIDEO 01 OF 05</div>
+            <h1 class="hero-title">
+              <span class="line1">NEXUS</span>
+              <span class="line2">GAMES</span>
+            </h1>
+            <p class="hero-sub">Ultimate Gaming Universe · Play · Compete · Dominate</p>
+            <div class="hero-btns">
+              <button class="btn-primary" onclick="goToPage(2)">PLAY NOW</button>
+              <button class="btn-secondary" onclick="goToPage(5)">JOIN TOURNAMENT</button>
+            </div>
+          </div>
+          <div class="slide-label">🚀 SPACE SHOOTER — COSMIC WARS 2085</div>
+        </div>
+
+        <!-- SLIDE 2: RACING -->
+        <div class="video-slide video-bg-2">
+          <div class="game-visual">
+            <div class="road-scene">
+              <div class="road"></div>
+            </div>
+            <div
+              style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);font-size:80px;animation:drive 0.4s steps(2) infinite;filter:drop-shadow(0 0 20px #ff6a00);">
+              🏎️</div>
+          </div>
+          <div class="video-overlay"></div>
+          <div class="video-content">
+            <div class="hero-badge">🏁 NOW PLAYING · VIDEO 02 OF 05</div>
+            <h1 class="hero-title">
+              <span class="line1">TURBO</span>
+              <span class="line2">RUSH</span>
+            </h1>
+            <p class="hero-sub">Race At The Speed Of Light · No Limits · No Rules</p>
+            <div class="hero-btns">
+              <button class="btn-primary" onclick="goToPage(2)">RACE NOW</button>
+              <button class="btn-secondary" onclick="goToPage(3)">TOP DRIVERS</button>
+            </div>
+          </div>
+          <div class="slide-label">🏎️ TURBO RUSH — HYPERSPEED RACING CHAMPIONSHIP</div>
+        </div>
+
+        <!-- SLIDE 3: RPG -->
+        <div class="video-slide video-bg-3">
+          <div class="game-visual">
+            <div class="rpg-scene">
+              <div class="sword"></div>
+              <div style="font-size:80px;animation:float 2s ease-in-out infinite;filter:drop-shadow(0 0 20px #ffd700);">
+                ⚔️</div>
+              <div class="shield"></div>
+            </div>
+          </div>
+          <div class="video-overlay"></div>
+          <div class="video-content">
+            <div class="hero-badge">⚔️ NOW PLAYING · VIDEO 03 OF 05</div>
+            <h1 class="hero-title">
+              <span class="line1">DRAGON</span>
+              <span class="line2">REALM</span>
+            </h1>
+            <p class="hero-sub">Epic Fantasy RPG · Forge Your Legend · Conquer All</p>
+            <div class="hero-btns">
+              <button class="btn-primary" onclick="goToPage(2)">ENTER REALM</button>
+              <button class="btn-secondary" onclick="goToPage(4)">BUY GAME</button>
+            </div>
+          </div>
+          <div class="slide-label">⚔️ DRAGON REALM — THE ETERNAL CHRONICLES</div>
+        </div>
+
+        <!-- SLIDE 4: FPS -->
+        <div class="video-slide video-bg-4">
+          <div class="game-visual">
+            <div class="fps-scene">
+              <div class="fps-grid"></div>
+              <div class="crosshair" id="crosshair"></div>
+            </div>
+          </div>
+          <div class="video-overlay"></div>
+          <div class="video-content">
+            <div class="hero-badge">🎯 NOW PLAYING · VIDEO 04 OF 05</div>
+            <h1 class="hero-title">
+              <span class="line1">GHOST</span>
+              <span class="line2">PROTOCOL</span>
+            </h1>
+            <p class="hero-sub">First Person Shooter · Tactical Warfare · Team Up</p>
+            <div class="hero-btns">
+              <button class="btn-primary" onclick="goToPage(2)">DEPLOY NOW</button>
+              <button class="btn-secondary" onclick="goToPage(5)">TOURNAMENTS</button>
+            </div>
+          </div>
+          <div class="slide-label">🎯 GHOST PROTOCOL — TACTICAL STRIKE FORCE</div>
+        </div>
+
+        <!-- SLIDE 5: BATTLE ROYALE -->
+        <div class="video-slide video-bg-5">
+          <div class="game-visual">
+            <div class="br-scene">
+              <div class="circle-storm"></div>
+              <div class="player-dot" style="top:45%;left:48%;"></div>
+              <div class="player-dot" style="top:55%;left:52%;background:#ff006e;box-shadow:0 0 10px #ff006e;"></div>
+              <div class="player-dot" style="top:50%;left:55%;background:#ffd700;box-shadow:0 0 10px #ffd700;"></div>
+            </div>
+          </div>
+          <div class="video-overlay"></div>
+          <div class="video-content">
+            <div class="hero-badge">💥 NOW PLAYING · VIDEO 05 OF 05</div>
+            <h1 class="hero-title">
+              <span class="line1">STORM</span>
+              <span class="line2">ZONE</span>
+            </h1>
+            <p class="hero-sub">Battle Royale · 100 Players · 1 Survivor · You?</p>
+            <div class="hero-btns">
+              <button class="btn-primary" onclick="goToPage(2)">DROP IN</button>
+              <button class="btn-secondary" onclick="goToPage(6)">COMMUNITY</button>
+            </div>
+          </div>
+          <div class="slide-label">💥 STORM ZONE — BATTLE ROYALE SURVIVAL</div>
+        </div>
+
+      </div><!-- end .video-slider -->
+
+      <!-- Navigation -->
+      <button class="video-arrow left" onclick="prevSlide()">&#8249;</button>
+      <button class="video-arrow right" onclick="nextSlide()">&#8250;</button>
+
+      <div class="video-dots">
+        <button class="vdot active" onclick="goToSlide(0)"></button>
+        <button class="vdot" onclick="goToSlide(1)"></button>
+        <button class="vdot" onclick="goToSlide(2)"></button>
+        <button class="vdot" onclick="goToSlide(3)"></button>
+        <button class="vdot" onclick="goToSlide(4)"></button>
+      </div>
+
+    </section><!-- end .video-hero -->
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-num">2.4M+</div>
+        <div class="stat-label">Active Players</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">150+</div>
+        <div class="stat-label">Games Available</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">$500K</div>
+        <div class="stat-label">Prize Pools</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">99.9%</div>
+        <div class="stat-label">Uptime</div>
+      </div>
+    </div>
+
+    <!-- FEATURED GAMES -->
+    <section class="home-games-section">
+      <h2 class="section-title">FEATURED <span class="accent">GAMES</span></h2>
+      <div class="games-grid-home">
+        <div class="game-card-home" onclick="goToPage(2)">
+          <div class="game-card-thumb"><img src="./images/home page/Cosmic Wars 2085.jpg" alt="Cosmic Wars 2085">
+          </div>
+          <div class="game-card-info">
+            <h3>Cosmic Wars 2085</h3>
+            <p>Defend the galaxy in this epic space shooter. Build your fleet and destroy enemy armadas.</p>
+            <span class="tag">SCI-FI</span><span class="tag">SHOOTER</span>
+          </div>
+        </div>
+        <div class="game-card-home" onclick="goToPage(2)">
+          <div class="game-card-thumb"><img src="./images/home page/Turbo Rush.jpg" alt="Turbo Rush"></div>
+          <div class="game-card-info">
+            <h3>Turbo Rush</h3>
+            <p>High-octane racing across 80 tracks. Upgrade your vehicle and dominate the circuit.</p>
+            <span class="tag">RACING</span><span class="tag">SPORT</span>
+          </div>
+        </div>
+        <div class="game-card-home" onclick="goToPage(2)">
+          <div class="game-card-thumb"><img src="./images/home page/Dragon Realm.jpg" alt="Dragon Realm"></div>
+          <div class="game-card-info">
+            <h3>Dragon Realm</h3>
+            <p>Immersive fantasy RPG with 200+ hours of content, dungeons, and epic boss fights.</p>
+            <span class="tag">RPG</span><span class="tag">FANTASY</span>
+          </div>
+        </div>
+        <div class="game-card-home" onclick="goToPage(2)">
+          <div class="game-card-thumb"><img src="./images/home page/Ghost Protocol.jpg" alt="Ghost Protocol"></div>
+          <div class="game-card-info">
+            <h3>Ghost Protocol</h3>
+            <p>Team-based tactical FPS with precise mechanics and competitive ranked play.</p>
+            <span class="tag">FPS</span><span class="tag">TACTICAL</span>
+          </div>
+        </div>
+        <div class="game-card-home" onclick="goToPage(2)">
+          <div class="game-card-thumb"><img src="./images/home page/Storm Zone.jpg" alt="Storm Zone"></div>
+          <div class="game-card-info">
+            <h3>Storm Zone</h3>
+            <p>100-player battle royale. Be the last one standing in the ever-shrinking storm zone.</p>
+            <span class="tag">BATTLE ROYALE</span>
+          </div>
+        </div>
+        <div class="game-card-home" onclick="goToPage(2)">
+          <div class="game-card-thumb"><img src="./images/home page/Mage Wars Online.jpg" alt="Mage Wars Online">
+          </div>
+          <div class="game-card-info">
+            <h3>Mage Wars Online</h3>
+            <p>Strategic card-based combat. Build your deck, master spells and defeat rivals worldwide.</p>
+            <span class="tag">STRATEGY</span><span class="tag">CARD</span>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:50px;">
+        <button class="btn-primary" onclick="goToPage(2)">VIEW ALL 150+ GAMES →</button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>NEXUS⚡GAMES</h3>
+          <p>The ultimate gaming universe. Play anywhere, compete everywhere, dominate everything. Join 2.4 million
+            players worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><button onclick="goToPage(1)">Home</button></li>
+            <li><button onclick="goToPage(2)">Games</button></li>
+            <li><button onclick="goToPage(3)">Leaderboard</button></li>
+            <li><button onclick="goToPage(4)">Store</button></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><button onclick="goToPage(5)">Tournaments</button></li>
+            <li><button onclick="goToPage(6)">Forums</button></li>
+            <li><button onclick="goToPage(7)">News</button></li>
+            <li><button onclick="goToPage(8)">Profile</button></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><button onclick="goToPage(9)">About Us</button></li>
+            <li><button onclick="goToPage(10)">Contact</button></li>
+            <li><button>Privacy Policy</button></li>
+            <li><button>Terms of Service</button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS GAMES. ALL RIGHTS RESERVED.</p>
+        <div class="social-links">
+          <div class="social-link"><img src="./images/contact/TwitterX.jpg" alt="Twitter"></div>
+          <div class="social-link"><img src="./images/contact/Email.jpg" alt="Email"></div>
+          <div class="social-link"><img src="./images/contact/Discord.jpg" alt="Discord"></div>
+          <div class="social-link"><img src="./images/contact/Headquarters.jpg" alt="Headquarters"></div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- end page1 -->
+
+  <!-- ==========================================
+     PAGE 2 — GAMES CATALOG
+========================================== -->
+  <div id="page2" class="page">
+    <div class="page2-header">
+      <h1>GAME CATALOG</h1>
+      <p>150+ games across all genres — find your next obsession</p>
+      <div class="filter-row">
+        <button class="filter-btn active">ALL GAMES</button>
+        <button class="filter-btn">ACTION</button>
+        <button class="filter-btn">RPG</button>
+        <button class="filter-btn">RACING</button>
+        <button class="filter-btn">STRATEGY</button>
+        <button class="filter-btn">SPORTS</button>
+        <button class="filter-btn">HORROR</button>
+        <button class="filter-btn">PUZZLE</button>
+      </div>
+    </div>
+
+    <div class="arcade-grid">
+      <!-- Row 1 -->
+      <div class="arcade-card" data-rating="⭐ 4.9">
+        <div class="arcade-thumb" style="background:linear-gradient(135deg,#0a0030,#200060);">🚀<img
+            src="./images/games/Cosmic Wars 2085.jpg" alt="Cosmic Wars 2085"></div>
+        <div class="arcade-info">
+          <h3>COSMIC WARS 2085</h3>
+          <div class="arcade-genre">SPACE SHOOTER</div>
+          <button class="arcade-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+      <div class="arcade-card" data-rating="⭐ 4.8">
+        <div class="arcade-thumb" style="background:linear-gradient(135deg,#200010,#600030);">🏎️<img
+            src="./images/games/Turbo Rush.jpg" alt="Turbo Rush"></div>
+        <div class="arcade-info">
+          <h3>TURBO RUSH</h3>
+          <div class="arcade-genre">RACING</div>
+          <button class="arcade-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+      <div class="arcade-card" data-rating="⭐ 5.0">
+        <div class="arcade-thumb" style="background:linear-gradient(135deg,#001030,#002060);">⚔️<img
+            src="./images/games/Dragon Realm.jpg" alt="Dragon Realm"></div>
+        <div class="arcade-info">
+          <h3>DRAGON REALM</h3>
+          <div class="arcade-genre">RPG FANTASY</div>
+          <button class="arcade-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+      <div class="arcade-card" data-rating="⭐ 4.7">
+        <div class="arcade-thumb" style="background:linear-gradient(135deg,#001500,#003000);">🎯<img
+            src="./images/games/Ghost Protocol.jpg" alt="Ghost Protocol"></div>
+        <div class="arcade-info">
+          <h3>GHOST PROTOCOL</h3>
+          <div class="arcade-genre">TACTICAL FPS</div>
+          <button class="arcade-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="arcade-card" data-rating="⭐ 4.9">
+        <div class="arcade-thumb" style="background:linear-gradient(135deg,#200800,#502000);">💥<img
+            src="./images/games/Storm Zone.jpg" alt="Storm Zone"></div>
+        <div class="arcade-info">
+          <h3>STORM ZONE</h3>
+          <div class="arcade-genre">BATTLE ROYALE</div>
+          <button class="arcade-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+      <div class="arcade-card" data-rating="⭐ 4.6">
+        <div class="arcade-thumb" style="background:linear-gradient(135deg,#100020,#300050);">🧙<img
+            src="./images/games/Mage Wars Online.jpg" alt="Mage Wars Online"></div>
+        <div class="arcade-info">
+          <h3>MAGE WARS</h3>
+          <div class="arcade-genre">STRATEGY CARD</div>
+          <button class="arcade-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+      <div class="arcade-card" data-rating="⭐ 4.5">
+        <div class="arcade-thumb" style="background:linear-gradient(135deg,#002010,#005030);">⚽<img
+            src="./images/games/ULTRA SOCCER.jpg" alt="ULTRA SOCCER"></div>
+        <div class="arcade-info">
+          <h3>ULTRA SOCCER</h3>
+          <div class="arcade-genre">SPORTS</div>
+          <button class="arcade-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+      <div class="arcade-card" data-rating="⭐ 4.8">
+        <div class="arcade-thumb" style="background:linear-gradient(135deg,#150000,#400010);">👻<img
+            src="./images/games/PHANTOM HOUSE.jpg" alt="Phantom House"></div>
+        <div class="arcade-info">
+          <h3>PHANTOM HOUSE</h3>
+          <div class="arcade-genre">HORROR</div>
+          <button class="arcade-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+      <!-- Row 3 -->
+      <div class="arcade-card" data-rating="⭐ 4.4">
+        <div class="arcade-thumb" style="background:linear-gradient(135deg,#0a1020,#201040);">🤖<img
+            src="./images/games/MECH ASSAULT.jpg" alt="Mech Assault"></div>
+        <div class="arcade-info">
+          <h3>MECH ASSAULT</h3>
+          <div class="arcade-genre">ACTION</div>
+          <button class="arcade-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+      <div class="arcade-card" data-rating="⭐ 4.7">
+        <div class="arcade-thumb" style="background:linear-gradient(135deg,#001020,#002040);">🌊<img
+            src="./images/games/OCEAN DEPTHS.jpg" alt="Ocean Depths"></div>
+        <div class="arcade-info">
+          <h3>OCEAN DEPTHS</h3>
+          <div class="arcade-genre">ADVENTURE</div>
+          <button class="arcade-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+      <div class="arcade-card" data-rating="⭐ 4.3">
+        <div class="arcade-thumb" style="background:linear-gradient(135deg,#100010,#300030);">🥊<img
+            src="./images/games/STREET BRAWLER.jpg" alt="Street Brawler"></div>
+        <div class="arcade-info">
+          <h3>STREET BRAWLER</h3>
+          <div class="arcade-genre">FIGHTING</div>
+          <button class="arcade-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+      <div class="arcade-card" data-rating="⭐ 4.6">
+        <div class="arcade-thumb" style="background:linear-gradient(135deg,#020a02,#051505);">🧩<img
+            src="./images/games/MIND MAZE.jpg" alt="Mind Maze"></div>
+        <div class="arcade-info">
+          <h3>MIND MAZE</h3>
+          <div class="arcade-genre">PUZZLE</div>
+          <button class="arcade-play-btn">PLAY NOW</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS GAMES — GAMES CATALOG</p>
+        <button class="btn-secondary" onclick="goToPage(1)">← BACK TO HOME</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ==========================================
+     PAGE 3 — LEADERBOARD
+========================================== -->
+  <div id="page3" class="page">
+    <div class="leaderboard-header">
+      <h1 class="section-title">🏆 GLOBAL <span class="accent">LEADERBOARD</span></h1>
+      <p style="color:var(--text-dim);letter-spacing:3px;font-size:14px;">SEASON 12 · UPDATED LIVE EVERY 60 SECONDS</p>
+    </div>
+
+    <div class="leaderboard-container">
+      <div class="lb-tabs">
+        <button class="lb-tab active">OVERALL</button>
+        <button class="lb-tab">THIS WEEK</button>
+        <button class="lb-tab">MONTHLY</button>
+        <button class="lb-tab">STORM ZONE</button>
+        <button class="lb-tab">GHOST PROTOCOL</button>
+      </div>
+
+      <div class="lb-header-row">
+        <span style="text-align:center">#</span>
+        <span>Player</span>
+        <span style="text-align:right">Score</span>
+        <span style="text-align:right">Wins</span>
+        <span style="text-align:right">K/D</span>
+      </div>
+
+      <div class="lb-row top1">
+        <div class="lb-rank">🥇</div>
+        <div class="lb-player">
+          <div class="player-avatar"><img src="./images/LEADERBOARD/PhantomX_999.jpg" alt="PhantomX_999"></div>
+          <div>
+            <div class="player-name">PhantomX_999</div>
+            <div class="player-level">LEVEL 100 · LEGENDARY</div>
+          </div>
+        </div>
+        <div class="lb-score">2,847,320</div>
+        <div class="lb-wins">1,204</div>
+        <div class="lb-kd">8.4</div>
+      </div>
+
+      <div class="lb-row top2">
+        <div class="lb-rank">🥈</div>
+        <div class="lb-player">
+          <div class="player-avatar"><img src="./images/LEADERBOARD/NovaBlade.jpg" alt="NovaBlade"></div>
+          <div>
+            <div class="player-name">NovaBlade</div>
+            <div class="player-level">LEVEL 98 · GRANDMASTER</div>
+          </div>
+        </div>
+        <div class="lb-score">2,641,880</div>
+        <div class="lb-wins">987</div>
+        <div class="lb-kd">7.2</div>
+      </div>
+
+      <div class="lb-row top3">
+        <div class="lb-rank">🥉</div>
+        <div class="lb-player">
+          <div class="player-avatar"><img src="./images/LEADERBOARD/CrimsonStorm.jpg" alt="CrimsonStorm"></div>
+          <div>
+            <div class="player-name">CrimsonStorm</div>
+            <div class="player-level">LEVEL 96 · GRANDMASTER</div>
+          </div>
+        </div>
+        <div class="lb-score">2,509,440</div>
+        <div class="lb-wins">843</div>
+        <div class="lb-kd">6.8</div>
+      </div>
+
+      <div class="lb-row">
+        <div class="lb-rank" style="color:#aaa">4</div>
+        <div class="lb-player">
+          <div class="player-avatar"><img src="./images/LEADERBOARD/QuantumKnight.jpg" alt="QuantumKnight"></div>
+          <div>
+            <div class="player-name">QuantumKnight</div>
+            <div class="player-level">LEVEL 94 · MASTER</div>
+          </div>
+        </div>
+        <div class="lb-score">2,341,100</div>
+        <div class="lb-wins">756</div>
+        <div class="lb-kd">5.9</div>
+      </div>
+
+      <div class="lb-row">
+        <div class="lb-rank" style="color:#aaa">5</div>
+        <div class="lb-player">
+          <div class="player-avatar"><img src="./images/LEADERBOARD/StarSurfer.jpg" alt="StarSurfer"></div>
+          <div>
+            <div class="player-name">StarSurfer</div>
+            <div class="player-level">LEVEL 92 · MASTER</div>
+          </div>
+        </div>
+        <div class="lb-score">2,198,760</div>
+        <div class="lb-wins">701</div>
+        <div class="lb-kd">5.4</div>
+      </div>
+
+      <div class="lb-row">
+        <div class="lb-rank" style="color:#aaa">6</div>
+        <div class="lb-player">
+          <div class="player-avatar"><img src="./images/LEADERBOARD/ShadowReaper.jpg" alt="ShadowReaper"></div>
+          <div>
+            <div class="player-name">ShadowReaper</div>
+            <div class="player-level">LEVEL 91 · MASTER</div>
+          </div>
+        </div>
+        <div class="lb-score">2,087,330</div>
+        <div class="lb-wins">668</div>
+        <div class="lb-kd">5.1</div>
+      </div>
+
+      <div class="lb-row">
+        <div class="lb-rank" style="color:#aaa">7</div>
+        <div class="lb-player">
+          <div class="player-avatar"><img src="./images/LEADERBOARD/DragonHeart.jpg" alt="DragonHeart"></div>
+          <div>
+            <div class="player-name">DragonHeart</div>
+            <div class="player-level">LEVEL 89 · DIAMOND</div>
+          </div>
+        </div>
+        <div class="lb-score">1,974,210</div>
+        <div class="lb-wins">612</div>
+        <div class="lb-kd">4.8</div>
+      </div>
+
+      <div class="lb-row">
+        <div class="lb-rank" style="color:#aaa">8</div>
+        <div class="lb-player">
+          <div class="player-avatar"><img src="./images/LEADERBOARD/BullsEye.jpg" alt="BullsEye"></div>
+          <div>
+            <div class="player-name">BullsEye</div>
+            <div class="player-level">LEVEL 88 · DIAMOND</div>
+          </div>
+        </div>
+        <div class="lb-score">1,862,900</div>
+        <div class="lb-wins">589</div>
+        <div class="lb-kd">4.5</div>
+      </div>
+
+      <div class="lb-row">
+        <div class="lb-rank" style="color:#aaa">9</div>
+        <div class="lb-player">
+          <div class="player-avatar"><img src="./images/LEADERBOARD/ThunderBolt.jpg" alt="ThunderBolt"></div>
+          <div>
+            <div class="player-name">ThunderBolt</div>
+            <div class="player-level">LEVEL 87 · DIAMOND</div>
+          </div>
+        </div>
+        <div class="lb-score">1,754,440</div>
+        <div class="lb-wins">541</div>
+        <div class="lb-kd">4.2</div>
+      </div>
+
+      <div class="lb-row">
+        <div class="lb-rank" style="color:#aaa">10</div>
+        <div class="lb-player">
+          <div class="player-avatar"><img src="./images/LEADERBOARD/FalconWing.jpg" alt="FalconWing"></div>
+          <div>
+            <div class="player-name">FalconWing</div>
+            <div class="player-level">LEVEL 85 · PLATINUM</div>
+          </div>
+        </div>
+        <div class="lb-score">1,643,120</div>
+        <div class="lb-wins">498</div>
+        <div class="lb-kd">3.9</div>
+      </div>
+
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS GAMES — LEADERBOARD</p>
+        <button class="btn-secondary" onclick="goToPage(1)">← BACK TO HOME</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ==========================================
+     PAGE 4 — STORE
+========================================== -->
+  <div id="page4" class="page">
+    <div class="store-hero">
+      <h1>NEXUS STORE</h1>
+      <p>Premium games, DLC, skins & more</p>
+    </div>
+
+    <div class="store-grid">
+      <div class="store-card featured">
+        <div class="store-thumb" style="background:linear-gradient(135deg,#0a0020,#300060);font-size:100px;">🚀<img
+            src="./images/games/Cosmic Wars 2085.jpg" alt="Cosmic Wars 2085"></div>
+        <div class="store-info">
+          <span class="store-badge">⭐ EDITOR'S CHOICE</span>
+          <h3>Cosmic Wars 2085 — Ultimate Edition</h3>
+          <p>The complete package. 50+ missions, all DLC, exclusive skins, and the legendary Ship Commander pack.
+            Everything you need to dominate the galaxy.</p>
+          <div class="price-row">
+            <div><span class="price">$39.99</span><span class="price-old">$79.99</span></div>
+            <button class="buy-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="store-card">
+        <div class="store-thumb" style="background:linear-gradient(135deg,#200800,#602000);">🏎️<img
+            src="./images/games/Turbo Rush.jpg" alt="Turbo Rush Season Pass">
+        </div>
+        <div class="store-info">
+          <span class="store-badge">🔥 HOT DEAL</span>
+          <h3>Turbo Rush Season Pass</h3>
+          <p>All 4 DLC packs, 40 new tracks, and the exclusive Hypercar collection.</p>
+          <div class="price-row">
+            <div><span class="price">$19.99</span><span class="price-old">$34.99</span></div>
+            <button class="buy-btn">BUY NOW</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="store-card">
+        <div class="store-thumb" style="background:linear-gradient(135deg,#001030,#002060);">⚔️<img
+            src="./images/games/Dragon Realm.jpg" alt="Dragon Realm: Shadow Expansion"></div>
+        <div class="store-info">
+          <span class="store-badge">NEW RELEASE</span>
+          <h3>Dragon Realm: Shadow Expansion</h3>
+          <p>New continent, 30 hours of story, 3 new character classes and epic dungeons.</p>
+          <div class="price-row">
+            <div><span class="price">$24.99</span></div>
+            <button class="buy-btn">PRE-ORDER</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="store-card">
+        <div class="store-thumb" style="background:linear-gradient(135deg,#001500,#003500);">🎯<img
+            src="./images/games/Ghost Protocol.jpg" alt="Ghost Protocol — Elite Operator Pack"></div>
+        <div class="store-info">
+          <span class="store-badge">SKIN BUNDLE</span>
+          <h3>Ghost Protocol — Elite Operator Pack</h3>
+          <p>10 exclusive operator skins, 6 weapon blueprints, and animated calling cards.</p>
+          <div class="price-row">
+            <div><span class="price">$14.99</span><span class="price-old">$29.99</span></div>
+            <button class="buy-btn">BUY NOW</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="store-card featured">
+        <div class="store-thumb" style="background:linear-gradient(135deg,#200000,#500010);font-size:100px;">💎<img
+            src="./images/games/Nexus Prime Annual Membership.jpg" alt="Nexus Prime Annual Membership"></div>
+        <div class="store-info">
+          <span class="store-badge">👑 NEXUS
+            PREMIUM</span>
+          <h3>Nexus Prime Annual Membership</h3>
+          <p>Unlimited access to all 150+ games, monthly free DLC drops, tournament entry passes, exclusive member
+            skins, and priority server access. The ultimate gaming subscription.</p>
+          <div class="price-row">
+            <div><span class="price">$9.99/mo</span><span class="price-old">$19.99/mo</span></div>
+            <button class="buy-btn">SUBSCRIBE NOW</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="store-card">
+        <div class="store-thumb" style="background:linear-gradient(135deg,#200800,#502000);">💥<img
+            src="./images/games/Storm Zone.jpg" alt="Storm Zone Season 12"></div>
+        <div class="store-info">
+          <span class="store-badge">SEASON PASS</span>
+          <h3>Storm Zone Season 12</h3>
+          <p>100-tier battle pass with exclusive cosmetics, emotes, and legendary drops.</p>
+          <div class="price-row">
+            <div><span class="price">$9.99</span></div>
+            <button class="buy-btn">UNLOCK PASS</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS GAMES — STORE</p>
+        <button class="btn-secondary" onclick="goToPage(1)">← BACK TO HOME</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ==========================================
+     PAGE 5 — TOURNAMENTS
+========================================== -->
+  <div id="page5" class="page">
+    <div class="tournament-hero">
+      <h1>TOURNAMENTS</h1>
+      <p>Compete · Win · Earn Glory</p>
+    </div>
+
+    <div class="tournaments-list">
+      <h2 class="section-title" style="margin-bottom:30px;">LIVE <span class="accent2">EVENTS</span></h2>
+
+      <div class="tournament-card">
+        <div class="t-game-icon"><img src="./images/games/Storm Zone.jpg" alt="Storm Zone"></div>
+        <div class="t-info">
+          <h3>Storm Zone World Championship 2025</h3>
+          <div class="t-meta">
+            <span>🌍 Global</span>
+            <span>👥 512 Teams</span>
+            <span>📅 Apr 28 – May 15</span>
+            <span>🎮 Storm Zone</span>
+          </div>
+          <div class="t-status live">● LIVE NOW</div>
+        </div>
+        <div class="t-prize">
+          <div class="prize-amount">$25,000</div>
+          <div class="prize-label">Prize Pool</div>
+          <button class="join-btn">SPECTATE</button>
+        </div>
+      </div>
+
+      <div class="tournament-card">
+        <div class="t-game-icon"><img src="./images/games/Ghost Protocol.jpg" alt="Ghost Protocol"></div>
+        <div class="t-info">
+          <h3>Ghost Protocol Tactical Cup</h3>
+          <div class="t-meta">
+            <span>🌍 Regional</span>
+            <span>👥 128 Teams</span>
+            <span>📅 May 3 – May 10</span>
+            <span>🎮 Ghost Protocol</span>
+          </div>
+          <div class="t-status upcoming">UPCOMING</div>
+        </div>
+        <div class="t-prize">
+          <div class="prize-amount">$10,000</div>
+          <div class="prize-label">Prize Pool</div>
+          <button class="join-btn">REGISTER</button>
+        </div>
+      </div>
+
+      <div class="tournament-card">
+        <div class="t-game-icon"><img src="./images/games/Turbo Rush.jpg" alt="Turbo Rush"></div>
+        <div class="t-info">
+          <h3>Turbo Rush Grand Prix Series</h3>
+          <div class="t-meta">
+            <span>🌍 Open</span>
+            <span>👥 1,024 Players</span>
+            <span>📅 May 5 – May 20</span>
+            <span>🎮 Turbo Rush</span>
+          </div>
+          <div class="t-status upcoming">UPCOMING</div>
+        </div>
+        <div class="t-prize">
+          <div class="prize-amount">$7,500</div>
+          <div class="prize-label">Prize Pool</div>
+          <button class="join-btn">REGISTER</button>
+        </div>
+      </div>
+
+      <div class="tournament-card">
+        <div class="t-game-icon"><img src="./images/games/Dragon Realm.jpg" alt="Dragon Realm"></div>
+        <div class="t-info">
+          <h3>Dragon Realm PvP Arena Season 12</h3>
+          <div class="t-meta">
+            <span>🌍 Global</span>
+            <span>👥 256 Players</span>
+            <span>📅 May 12 – Jun 1</span>
+            <span>🎮 Dragon Realm</span>
+          </div>
+          <div class="t-status upcoming">UPCOMING</div>
+        </div>
+        <div class="t-prize">
+          <div class="prize-amount">$5,000</div>
+          <div class="prize-label">Prize Pool</div>
+          <button class="join-btn">REGISTER</button>
+        </div>
+      </div>
+
+      <div class="tournament-card">
+        <div class="t-game-icon"><img src="./images/games/Cosmic Wars 2085.jpg" alt="Cosmic Wars"></div>
+        <div class="t-info">
+          <h3>Cosmic Wars Intergalactic League</h3>
+          <div class="t-meta">
+            <span>🌍 Open</span>
+            <span>👥 2,048 Players</span>
+            <span>📅 Jun 1 – Jun 30</span>
+            <span>🎮 Cosmic Wars 2085</span>
+          </div>
+          <div class="t-status upcoming">UPCOMING</div>
+        </div>
+        <div class="t-prize">
+          <div class="prize-amount">$15,000</div>
+          <div class="prize-label">Prize Pool</div>
+          <button class="join-btn">REGISTER</button>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS GAMES — TOURNAMENTS</p>
+        <button class="btn-secondary" onclick="goToPage(1)">← BACK TO HOME</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ==========================================
+     PAGE 6 — COMMUNITY
+========================================== -->
+  <div id="page6" class="page">
+    <div class="matrix-header">
+      <h1>// COMMUNITY FORUMS</h1>
+      <p>// CONNECT · DISCUSS · SHARE · DOMINATE //</p>
+    </div>
+
+    <div class="forum-layout">
+      <div class="forum-sidebar">
+        <h3>// Categories</h3>
+
+        <div class="sidebar-item active">
+          <span class="sidebar-item-name"><img src="./images/games/6.jpg" alt=""> General</span>
+          <span class="sidebar-count">4.2k</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="sidebar-item-name"><img src="./images/games/Cosmic Wars 2085.jpg" alt=""> Cosmic Wars</span>
+          <span class="sidebar-count">1.8k</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="sidebar-item-name"><img src="./images/games/Storm Zone.jpg" alt=""> Storm Zone</span>
+          <span class="sidebar-count">3.1k</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="sidebar-item-name"><img src="./images/games/Ghost Protocol.jpg" alt=""> Ghost Protocol</span>
+          <span class="sidebar-count">2.4k</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="sidebar-item-name"><img src="./images/games/Dragon Realm.jpg" alt=""> Dragon Realm</span>
+          <span class="sidebar-count">1.6k</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="sidebar-item-name"><img src="./images/games/Turbo Rush.jpg" alt=""> Turbo Rush</span>
+          <span class="sidebar-count">890</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="sidebar-item-name"><img src="./images/games/Tournaments.jpg" alt=""> Tournaments</span>
+          <span class="sidebar-count">2.7k</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="sidebar-item-name"><img src="./images/games/Bug Reports.jpg" alt=""> Bug Reports</span>
+          <span class="sidebar-count">342</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="sidebar-item-name"><img src="./images/games/Suggestions.jpg" alt=""> Suggestions</span>
+          <span class="sidebar-count">1.1k</span>
+        </div>
+      </div>
+
+      <div class="forum-main">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+          <div class="section-label" style="border:none;margin:0">// RECENT POSTS</div>
+          <button class="btn-primary" style="font-size:11px;padding:10px 20px;">+ NEW POST</button>
+        </div>
+
+        <div class="post-card">
+          <div class="post-header">
+            <h3>// [GUIDE] How to reach Rank 1 in Storm Zone Season 12 — Full Strategy</h3>
+            <span class="post-time">2 min ago</span>
+          </div>
+          <p class="post-preview">> After 3 months of grinding I finally hit Rank 1. Here's everything I learned about
+            loot rotations, storm tracking, and endgame positioning...</p>
+          <div class="post-footer">
+            <span class="post-meta">👤 PhantomX_999</span>
+            <span class="post-meta">💬 148 replies</span>
+            <span class="post-meta">👁️ 12.4k views</span>
+            <span class="post-meta" style="color:var(--neon-green);">⬆️ 924 upvotes</span>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-header">
+            <h3>// Ghost Protocol Update 3.4 — All Changes Breakdown</h3>
+            <span class="post-time">15 min ago</span>
+          </div>
+          <p class="post-preview">> The new patch dropped and it's massive. New operator, map changes to Neon
+            District,
+            and major weapon rebalancing...</p>
+          <div class="post-footer">
+            <span class="post-meta">👤 NovaBlade</span>
+            <span class="post-meta">💬 87 replies</span>
+            <span class="post-meta">👁️ 5.2k views</span>
+            <span class="post-meta" style="color:var(--neon-green);">⬆️ 412 upvotes</span>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-header">
+            <h3>// LFG: Storm Zone World Championship team (need 4 more skilled players)</h3>
+            <span class="post-time">32 min ago</span>
+          </div>
+          <p class="post-preview">> Diamond+ required. Looking for experienced players for the World Championship
+            starting April 28. We've placed top 16 last season...</p>
+          <div class="post-footer">
+            <span class="post-meta">👤 CrimsonStorm</span>
+            <span class="post-meta">💬 23 replies</span>
+            <span class="post-meta">👁️ 1.8k views</span>
+            <span class="post-meta" style="color:var(--neon-green);">⬆️ 56 upvotes</span>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-header">
+            <h3>// Dragon Realm: Best builds for the new Shadow Expansion classes</h3>
+            <span class="post-time">1 hour ago</span>
+          </div>
+          <p class="post-preview">> Tested all 3 new classes extensively on the PTR. Here's my tier list and the
+            optimal
+            skill trees for each...</p>
+          <div class="post-footer">
+            <span class="post-meta">👤 DragonHeart</span>
+            <span class="post-meta">💬 64 replies</span>
+            <span class="post-meta">👁️ 3.1k views</span>
+            <span class="post-meta" style="color:var(--neon-green);">⬆️ 287 upvotes</span>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-header">
+            <h3>// [BUG] Cosmic Wars: Ships clipping through asteroid belts on Level 47</h3>
+            <span class="post-time">2 hours ago</span>
+          </div>
+          <p class="post-preview">> Reproducible bug found in Mission 47 — Asteroid Chase. Ships phase through large
+            asteroids when boosting. Steps to reproduce inside...</p>
+          <div class="post-footer">
+            <span class="post-meta">👤 StarSurfer</span>
+            <span class="post-meta">💬 12 replies</span>
+            <span class="post-meta">👁️ 892 views</span>
+            <span class="post-meta" style="color:var(--neon-cyan);">🔧 Dev Responded</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS GAMES — COMMUNITY</p>
+        <button class="btn-secondary" onclick="goToPage(1)">← BACK TO HOME</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ==========================================
+     PAGE 7 — NEWS
+========================================== -->
+  <div id="page7" class="page">
+    <div class="news-header">
+      <div class="news-header-inner">
+        <h1>NEXUS <em>NEWS</em></h1>
+        <div class="news-date">MONDAY · APRIL 27, 2026</div>
+      </div>
+    </div>
+
+    <div style="padding: 0 60px; max-width: 1260px; margin: 0 auto;">
+      <div class="news-grid" style="padding-top:40px;">
+        <div class="news-featured">
+          <div class="news-featured-thumb"><img src="./images/games/Storm Zone.jpg" alt="Storm Zone Season 12"></div>
+          <div class="news-featured-content">
+            <div class="news-category">MAJOR ANNOUNCEMENT</div>
+            <h2>Storm Zone Season 12 Launches With Massive Map Overhaul & New Mechanics</h2>
+            <p>The most anticipated seasonal update in Storm Zone history drops today, bringing a completely
+              redesigned
+              central zone, three new weapons, and a revolutionary storm mechanic that changes everything about
+              late-game strategy...</p>
+            <br>
+            <button class="btn-secondary" style="font-size:12px;padding:10px 24px;">READ MORE →</button>
+          </div>
+        </div>
+
+        <div class="news-small">
+          <div class="news-small-thumb"><img src="./images/games/Ghost Protocol.jpg" alt="PhantomX_999"></div>
+          <div class="news-small-content">
+            <div class="news-category" style="font-size:10px;">ESPORTS</div>
+            <h3>PhantomX_999 Wins Ghost Protocol World Finals, Takes Home $15K</h3>
+            <p>In a stunning grand final performance, the Legendary-ranked player swept the competition 3-0 in the
+              best-of-five series...</p>
+            <br>
+            <button class="btn-secondary" style="font-size:11px;padding:8px 18px;">READ →</button>
+          </div>
+        </div>
+
+        <div class="news-small">
+          <div class="news-small-thumb"><img src="./images/games/Cosmic Wars 2085.jpg" alt="Cosmic Wars 2085"></div>
+          <div class="news-small-content">
+            <div class="news-category" style="font-size:10px;">GAME UPDATE</div>
+            <h3>Cosmic Wars 2085 Patch 5.0: New Galaxy, 20 Ships & Coop Mode</h3>
+            <p>The biggest Cosmic Wars update ever adds the Andromeda sector, cooperative multiplayer for up to 8
+              players...</p>
+            <br>
+            <button class="btn-secondary" style="font-size:11px;padding:8px 18px;">READ →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-body">
+        <h3 class="section-label">MORE NEWS</h3>
+        <div class="more-news-grid">
+          <div
+            style="background:var(--dark-card);border:1px solid rgba(255,255,255,0.05);padding:20px;cursor:pointer;transition:all 0.3s;"
+            onmouseover="this.style.borderColor='rgba(0,245,255,0.2)'"
+            onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'">
+            <div class="news-more-icon"><img src="./images/games/Dragon Realm.jpg"
+                alt="Dragon Realm Shadow Expansion"></div>
+            <div class="news-category">EXPANSION</div>
+            <h3 style="font-family:Orbitron,monospace;font-size:14px;color:#fff;margin-bottom:8px;line-height:1.4;">
+              Dragon Realm Shadow Expansion Releases May 15</h3>
+            <p style="font-size:12px;color:var(--text-dim);line-height:1.6;">Pre-orders are now live for the massive
+              Shadow Expansion bringing 30+ hours of new story content.</p>
+          </div>
+          <div
+            style="background:var(--dark-card);border:1px solid rgba(255,255,255,0.05);padding:20px;cursor:pointer;transition:all 0.3s;"
+            onmouseover="this.style.borderColor='rgba(0,245,255,0.2)'"
+            onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'">
+            <div class="news-more-icon"><img src="./images/games/Turbo Rush.jpg" alt="Turbo Rush">
+            </div>
+            <div class="news-category">RACING</div>
+            <h3 style="font-family:Orbitron,monospace;font-size:14px;color:#fff;margin-bottom:8px;line-height:1.4;">
+              Turbo Rush Adds Real-Time Weather System to All 80 Tracks</h3>
+            <p style="font-size:12px;color:var(--text-dim);line-height:1.6;">Dynamic rain, fog, and night conditions
+              now
+              affect driving physics and strategy in all game modes.</p>
+          </div>
+          <div
+            style="background:var(--dark-card);border:1px solid rgba(255,255,255,0.05);padding:20px;cursor:pointer;transition:all 0.3s;"
+            onmouseover="this.style.borderColor='rgba(0,245,255,0.2)'" `
+            onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'">
+            <div class="news-more-icon"><img src="./images/games/Nexus Prime Annual Membership.jpg"
+                alt="Nexus Prime"></div>
+            <div class="news-category">PLATFORM</div>
+            <h3 style="font-family:Orbitron,monospace;font-size:14px;color:#fff;margin-bottom:8px;line-height:1.4;">
+              Nexus Prime Membership Now Includes Cloud Save & Cross-Play</h3>
+            <p style="font-size:12px;color:var(--text-dim);line-height:1.6;">Premium subscribers can now sync progress
+              across all platforms and play with friends on any device.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS GAMES — NEWS</p>
+        <button class="btn-secondary" onclick="goToPage(1)">← BACK TO HOME</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ==========================================
+     PAGE 8 — PROFILE
+========================================== -->
+  <div id="page8" class="page">
+    <div class="profile-layout">
+      <div class="profile-sidebar">
+        <div class="profile-avatar-big"><img src="./images/games/ChatGPT Image Jun 15, 2026, 10_54_25 PM.png"
+            alt="PLAYER_ONE"></div>
+        <div class="profile-username">Mr.Predator-X</div>
+        <div class="profile-rank">⭐ DIAMOND RANK</div>
+
+        <div class="xp-bar-container">
+          <div class="xp-bar"></div>
+        </div>
+        <div class="xp-label">73% · LVL 76 → 77</div>
+
+        <div class="profile-stats">
+          <div class="pstat">
+            <div class="pstat-num">1,204</div>
+            <div class="pstat-label">Wins</div>
+          </div>
+          <div class="pstat">
+            <div class="pstat-num">4.2</div>
+            <div class="pstat-label">K/D Ratio</div>
+          </div>
+          <div class="pstat">
+            <div class="pstat-num">847h</div>
+            <div class="pstat-label">Play Time</div>
+          </div>
+          <div class="pstat">
+            <div class="pstat-num">32</div>
+            <div class="pstat-label">Trophies</div>
+          </div>
+        </div>
+
+        <div style="margin-top:10px;">
+          <button class="btn-primary"
+            style="width:100%;font-size:12px;padding:12px;clip-path:none;border-radius:4px;">EDIT PROFILE</button>
+          <button class="btn-secondary"
+            style="width:100%;font-size:12px;padding:12px;clip-path:none;border-radius:4px;margin-top:10px;"
+            onclick="goToPage(4)">GO TO STORE</button>
+        </div>
+      </div>
+
+      <div class="profile-main">
+        <div class="section-label">RECENT MATCHES</div>
+        <div class="recent-games">
+          <div class="recent-game">
+            <span class="recent-game-icon"><img src="./images/games/Storm Zone.jpg" alt="Storm Zone"></span>
+            <div>
+              <div class="recent-game-name">Storm Zone</div>
+              <div class="recent-game-result win">✅ WIN — #1 of 100</div>
+            </div>
+          </div>
+          <div class="recent-game">
+            <span class="recent-game-icon"><img src="./images/games/Ghost Protocol.jpg" alt="Ghost Protocol"></span>
+            <div>
+              <div class="recent-game-name">Ghost Protocol</div>
+              <div class="recent-game-result win">✅ WIN — 18 Kills</div>
+            </div>
+          </div>
+          <div class="recent-game">
+            <span class="recent-game-icon"><img src="./images/games/Cosmic Wars 2085.jpg" alt="Cosmic Wars"></span>
+            <div>
+              <div class="recent-game-name">Cosmic Wars</div>
+              <div class="recent-game-result loss">❌ LOSS — 2nd Place</div>
+            </div>
+          </div>
+          <div class="recent-game">
+            <span class="recent-game-icon"><img src="./images/games/Dragon Realm.jpg" alt="Dragon Realm"></span>
+            <div>
+              <div class="recent-game-name">Dragon Realm</div>
+              <div class="recent-game-result win">✅ WIN — Dungeon Clear</div>
+            </div>
+          </div>
+          <div class="recent-game">
+            <span class="recent-game-icon"><img src="./images/games/Turbo Rush.jpg" alt="Turbo Rush"></span>
+            <div>
+              <div class="recent-game-name">Turbo Rush</div>
+              <div class="recent-game-result win">✅ WIN — 1st Place</div>
+            </div>
+          </div>
+          <div class="recent-game">
+            <span class="recent-game-icon"><img src="./images/games/STREET BRAWLER.jpg" alt="STREET BRAWLER"></span>
+            <div>
+              <div class="recent-game-name">STREET BRAWLER</div>
+              <div class="recent-game-result loss">❌ LOSS — Top 5</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-label">ACHIEVEMENTS</div>
+        <div class="achievements-grid">
+          <div class="achievement">
+            <div class="achievement-icon">🏆</div>
+            <div class="achievement-name">CHAMPION</div>
+          </div>
+          <div class="achievement">
+            <div class="achievement-icon">💀</div>
+            <div class="achievement-name">KILLER</div>
+          </div>
+          <div class="achievement">
+            <div class="achievement-icon">🚀</div>
+            <div class="achievement-name">PIONEER</div>
+          </div>
+          <div class="achievement">
+            <div class="achievement-icon">🌟</div>
+            <div class="achievement-name">LEGEND</div>
+          </div>
+          <div class="achievement">
+            <div class="achievement-icon">🔥</div>
+            <div class="achievement-name">ON FIRE</div>
+          </div>
+          <div class="achievement">
+            <div class="achievement-icon">⚡</div>
+            <div class="achievement-name">SPEEDY</div>
+          </div>
+          <div class="achievement">
+            <div class="achievement-icon">🛡️</div>
+            <div class="achievement-name">DEFENDER</div>
+          </div>
+          <div class="achievement">
+            <div class="achievement-icon">🎯</div>
+            <div class="achievement-name">SNIPER</div>
+          </div>
+          <div class="achievement">
+            <div class="achievement-icon">💎</div>
+            <div class="achievement-name">DIAMOND</div>
+          </div>
+          <div class="achievement">
+            <div class="achievement-icon">👑</div>
+            <div class="achievement-name">ROYALTY</div>
+          </div>
+          <div class="achievement" style="opacity:0.3;border-color:rgba(255,255,255,0.05)">
+            <div class="achievement-icon">🌙</div>
+            <div class="achievement-name">LOCKED</div>
+          </div>
+          <div class="achievement" style="opacity:0.3;border-color:rgba(255,255,255,0.05)">
+            <div class="achievement-icon">💣</div>
+            <div class="achievement-name">LOCKED</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS GAMES — PLAYER PROFILE</p>
+        <button class="btn-secondary" onclick="goToPage(1)">← BACK TO HOME</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ==========================================
+     PAGE 9 — ABOUT
+========================================== -->
+  <div id="page9" class="page">
+    <div class="about-hero">
+      <div class="about-grid-bg"></div>
+      <h1>ABOUT NEXUS</h1>
+      <p>We are the world's fastest-growing gaming platform — built by gamers, for gamers. Our mission is to make
+        elite
+        gaming accessible to everyone on the planet.</p>
+    </div>
+
+    <div class="about-content">
+      <h2 class="section-title">WHY <span class="accent">NEXUS</span>?</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon"><img src="./images/about/BLAZING PERFORMANCE.jpg" alt="Blazing Performance"></div>
+          <h3>BLAZING PERFORMANCE</h3>
+          <p>99.9% uptime with global server infrastructure across 40+ countries. Ultra-low latency for competitive
+            play. No lag. No excuses.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon"><img src="./images/about/150+ GAMES.jpg" alt="150+ Games"></div>
+          <h3>150+ GAMES</h3>
+          <p>From battle royale to RPG, racing to strategy — our catalog covers every genre. New games added every
+            month. Always something new to discover.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon"><img src="./images/about/COMPETITIVE ECOSYSTEM.jpg" alt="Competitive Ecosystem"></div>
+          <h3>COMPETITIVE ECOSYSTEM</h3>
+          <p>Regular tournaments with real prize pools. Detailed stats tracking. Seasonal rankings. A complete
+            competitive ladder from casual to pro.</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">MEET THE <span class="accent">TEAM</span></h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar"><img src="./images/about/Alex Chen.jpg" alt="Alex Chen"></div>
+          <div class="team-name">Alex Chen</div>
+          <div class="team-role">CEO & Founder</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><img src="./images/about/Zara Malik.jpg" alt="Zara Malik"></div>
+          <div class="team-name">Zara Malik</div>
+          <div class="team-role">Head of Design</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><img src="./images/about/Marcus Lee.jpg" alt="Marcus Lee"></div>
+          <div class="team-name">Marcus Lee</div>
+          <div class="team-role">Lead Engineer</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><img src="./images/about/Priya Nair.jpg" alt="Priya Nair"></div>
+          <div class="team-name">Priya Nair</div>
+          <div class="team-role">Community Director</div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS GAMES — ABOUT</p>
+        <button class="btn-secondary" onclick="goToPage(1)">← BACK TO HOME</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ==========================================
+     PAGE 10 — CONTACT
+========================================== -->
+  <div id="page10" class="page">
+    <div class="contact-layout">
+      <div class="contact-left">
+        <h1>GET IN <span>TOUCH</span></h1>
+        <p>Have questions, feedback, or partnership opportunities? Our team is online 24/7 and ready to respond within
+          2
+          hours.</p>
+
+        <div class="contact-info-items">
+          <div class="contact-item">
+            <div class="contact-item-icon"><img src="./images/contact/Email.jpg" alt="Email"></div>
+            <div class="contact-item-text">
+              <h4>Email</h4>
+              <p>hello@nexusgames.gg</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><img src="./images/contact/Discord.jpg" alt="Discord"></div>
+            <div class="contact-item-text">
+              <h4>Discord</h4>
+              <p>discord.gg/nexusgames</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><img src="./images/contact/TwitterX.jpg" alt="Twitter/X"></div>
+            <div class="contact-item-text">
+              <h4>Twitter/X</h4>
+              <p>@nexusgames</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><img src="./images/contact/Headquarters.jpg" alt="Headquarters"></div>
+            <div class="contact-item-text">
+              <h4>Headquarters</h4>
+              <p>San Francisco, CA — USA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-right">
+        <h2>SEND MESSAGE</h2>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" class="form-input" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" class="form-input" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select class="form-select">
+            <option>General Inquiry</option>
+            <option>Bug Report</option>
+            <option>Partnership</option>
+            <option>Tournament Registration</option>
+            <option>Technical Support</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea class="form-textarea" placeholder="Write your message here..."></textarea>
+        </div>
+        <button class="form-submit">SEND MESSAGE ›</button>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <p>© 2025 NEXUS GAMES — CONTACT</p>
+        <button class="btn-secondary" onclick="goToPage(1)">← BACK TO HOME</button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js.js"></script>
+
+</body>
+
+</html>

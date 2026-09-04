@@ -1,0 +1,3423 @@
+:root {
+    --neon-cyan: #00f5ff;
+    --neon-pink: #ff006e;
+    --neon-green: #39ff14;
+    --neon-orange: #ff6a00;
+    --dark-bg: #050510;
+    --dark-card: #0a0a1f;
+    --dark-panel: #0d0d2b;
+    --text-light: #e0e8ff;
+    --text-dim: #7080a0;
+    --gold: #ffd700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--dark-bg);
+    color: var(--text-light);
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* Custom cursor */
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--neon-cyan);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+}
+
+.cursor-dot {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: var(--neon-pink);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+}
+
+/* PAGE SYSTEM */
+.page {
+    display: none;
+    min-height: 100vh;
+}
+
+.page.active {
+    display: block;
+}
+
+/* ==========================================
+     GLOBAL NAV
+  ========================================== */
+.global-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(5, 5, 16, 0.95);
+    border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(20px);
+}
+
+.nav-logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 22px;
+    font-weight: 900;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 6px;
+    list-style: none;
+}
+
+.nav-links li a,
+.nav-links li button {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.nav-links li button:hover,
+.nav-links li button.active {
+    color: var(--neon-cyan);
+    background: rgba(0, 245, 255, 0.08);
+}
+
+.nav-links li button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: var(--neon-cyan);
+    box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+/* ==========================================
+     PAGE 1 — HOME (FRONT PAGE)
+     Design: NEON CYBERPUNK — Dark, glowing, electric
+  ========================================== */
+#page1 {
+    padding-top: 64px;
+    background: var(--dark-bg);
+}
+
+/* VIDEO HERO SECTION */
+.video-hero {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 64px);
+    overflow: hidden;
+}
+
+.video-slider {
+    display: flex;
+    width: 500%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.video-slide {
+    width: 20%;
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.video-slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-slide iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+}
+
+/* Fallback gradient backgrounds for videos */
+.video-bg-1 {
+    background: linear-gradient(135deg, #0a0020 0%, #1a0050 50%, #000a30 100%);
+}
+
+.video-bg-2 {
+    background: linear-gradient(135deg, #200010 0%, #500020 50%, #100020 100%);
+}
+
+.video-bg-3 {
+    background: linear-gradient(135deg, #001020 0%, #003050 50%, #001530 100%);
+}
+
+.video-bg-4 {
+    background: linear-gradient(135deg, #102000 0%, #205000 50%, #0a1500 100%);
+}
+
+.video-bg-5 {
+    background: linear-gradient(135deg, #200a00 0%, #502000 50%, #301000 100%);
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(5, 5, 16, 0.2) 0%, rgba(5, 5, 16, 0.7) 100%);
+}
+
+.video-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+}
+
+.hero-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--neon-cyan);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    border: 1px solid var(--neon-cyan);
+    padding: 6px 20px;
+    margin-bottom: 24px;
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px var(--neon-cyan);
+    }
+
+    50% {
+        box-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+    }
+}
+
+.hero-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(40px, 8vw, 100px);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.hero-title span.line1 {
+    display: block;
+    background: linear-gradient(90deg, #fff, var(--neon-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-title span.line2 {
+    display: block;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+
+    0%,
+    95%,
+    100% {
+        opacity: 1;
+    }
+
+    96%,
+    99% {
+        opacity: 0.7;
+    }
+}
+
+.hero-sub {
+    font-size: 18px;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 16px;
+}
+
+.btn-primary {
+    background: var(--neon-cyan);
+    color: #000;
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 14px 36px;
+    border: none;
+    cursor: pointer;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+.btn-primary:hover {
+    background: var(--neon-pink);
+    box-shadow: 0 0 30px var(--neon-pink);
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--neon-cyan);
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 14px 36px;
+    border: 1px solid var(--neon-cyan);
+    cursor: pointer;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 245, 255, 0.1);
+    box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+/* Video dots */
+.video-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+}
+
+.vdot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.vdot.active {
+    background: var(--neon-cyan);
+    box-shadow: 0 0 10px var(--neon-cyan);
+    transform: scale(1.4);
+}
+
+/* Video arrows */
+.video-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background: rgba(0, 245, 255, 0.15);
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-arrow:hover {
+    background: rgba(0, 245, 255, 0.3);
+    box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+.video-arrow.left {
+    left: 30px;
+}
+
+.video-arrow.right {
+    right: 30px;
+}
+
+/* Video slide labels */
+.slide-label {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    color: var(--neon-cyan);
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+/* VIDEO GAME VISUALS (CSS art for each slide) */
+.game-visual {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Slide 1 - Space shooter */
+.spaceship {
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-20px)
+    }
+}
+
+.spaceship-body {
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 80px solid var(--neon-cyan);
+    filter: drop-shadow(0 0 20px var(--neon-cyan));
+    position: relative;
+}
+
+.stars-bg {
+    position: absolute;
+    inset: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--d, 2s) infinite;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: 0.2
+    }
+}
+
+/* Slide 2 - Racing */
+.road-scene {
+    position: absolute;
+    inset: 0;
+    perspective: 400px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.road {
+    width: 400px;
+    height: 300px;
+    background: linear-gradient(to top, #1a1a1a 0%, #333 100%);
+    transform: rotateX(45deg);
+    margin: 0 auto;
+    position: relative;
+    border-left: 4px solid #fff;
+    border-right: 4px solid #fff;
+}
+
+.car-icon {
+    font-size: 80px;
+    animation: drive 0.5s steps(2) infinite;
+    filter: drop-shadow(0 0 20px var(--neon-orange));
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes drive {
+    0% {
+        transform: translateX(-50%) rotate(-1deg)
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(1deg)
+    }
+}
+
+/* Slide 3 - RPG */
+.rpg-scene {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.sword {
+    width: 10px;
+    height: 120px;
+    background: linear-gradient(to bottom, #fff, var(--gold));
+    position: relative;
+    border-radius: 2px;
+    animation: sword-glow 2s infinite;
+}
+
+.sword::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 10px;
+    background: var(--gold);
+}
+
+@keyframes sword-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px var(--gold)
+    }
+
+    50% {
+        box-shadow: 0 0 60px var(--gold), 0 0 100px var(--gold)
+    }
+}
+
+.shield {
+    width: 60px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--neon-cyan), #0050aa);
+    clip-path: polygon(50% 100%, 0% 30%, 10% 0%, 90% 0%, 100% 30%);
+    animation: shield-pulse 2s infinite;
+}
+
+@keyframes shield-pulse {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 10px var(--neon-cyan))
+    }
+
+    50% {
+        filter: drop-shadow(0 0 30px var(--neon-cyan))
+    }
+}
+
+/* Slide 4 - FPS */
+.fps-scene {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    animation: crosshair-move 3s infinite;
+}
+
+.crosshair::before,
+.crosshair::after {
+    content: '';
+    position: absolute;
+    background: var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-green);
+}
+
+.crosshair::before {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.crosshair::after {
+    width: 2px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes crosshair-move {
+
+    0%,
+    100% {
+        top: 50%;
+        left: 50%
+    }
+
+    25% {
+        top: 40%;
+        left: 60%
+    }
+
+    50% {
+        top: 60%;
+        left: 40%
+    }
+
+    75% {
+        top: 45%;
+        left: 55%
+    }
+}
+
+.fps-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(57, 255, 20, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57, 255, 20, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* Slide 5 - Battle Royale */
+.br-scene {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.circle-storm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid var(--neon-pink);
+    border-radius: 50%;
+    animation: shrink 4s ease-in-out infinite alternate;
+    box-shadow: 0 0 30px var(--neon-pink), inset 0 0 30px rgba(255, 0, 110, 0.1);
+}
+
+@keyframes shrink {
+    from {
+        width: 500px;
+        height: 500px;
+    }
+
+    to {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.player-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--neon-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* HOME PAGE SECTIONS */
+.section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title .accent {
+    color: var(--neon-cyan);
+}
+
+.section-title .accent2 {
+    color: var(--neon-pink);
+}
+
+.home-games-section {
+    padding: 100px 60px;
+    background: var(--dark-bg);
+    position: relative;
+}
+
+.home-games-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+}
+
+.games-grid-home {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.game-card-home {
+    background: var(--dark-card);
+    border: 1px solid rgba(0, 245, 255, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s;
+    position: relative;
+}
+
+.game-card-home:hover {
+    border-color: var(--neon-cyan);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 245, 255, 0.2);
+}
+
+.game-card-thumb {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card-thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.game-card-home:nth-child(1) .game-card-thumb {
+    background: linear-gradient(135deg, #0a0030, #200060);
+}
+
+.game-card-home:nth-child(2) .game-card-thumb {
+    background: linear-gradient(135deg, #200010, #500030);
+}
+
+.game-card-home:nth-child(3) .game-card-thumb {
+    background: linear-gradient(135deg, #001030, #002060);
+}
+
+.game-card-home:nth-child(4) .game-card-thumb {
+    background: linear-gradient(135deg, #101000, #303000);
+}
+
+.game-card-home:nth-child(5) .game-card-thumb {
+    background: linear-gradient(135deg, #200800, #502000);
+}
+
+.game-card-home:nth-child(6) .game-card-thumb {
+    background: linear-gradient(135deg, #100020, #300050);
+}
+
+.game-card-info {
+    padding: 20px;
+}
+
+.game-card-info h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.game-card-info p {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.tag {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--neon-cyan);
+    border: 1px solid var(--neon-cyan);
+    padding: 3px 10px;
+    margin-right: 6px;
+}
+
+/* Stats bar */
+.stats-bar {
+    background: var(--dark-panel);
+    border-top: 1px solid rgba(0, 245, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+    padding: 40px 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.stat-item {
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-item:last-child {
+    border-right: none;
+}
+
+.stat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--neon-cyan);
+}
+
+.stat-label {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 6px;
+}
+
+/* ==========================================
+     PAGE 2 — GAMES CATALOG
+     Design: RETRO ARCADE — Pixel aesthetic, colorful
+  ========================================== */
+#page2 {
+    padding-top: 64px;
+    background: #0a0015;
+    min-height: 100vh;
+}
+
+.page2-header {
+    padding: 60px;
+    text-align: center;
+    background: linear-gradient(to bottom, #0a0015, #150025);
+    border-bottom: 2px solid;
+    border-image: linear-gradient(90deg, transparent, #ff006e, var(--neon-cyan), transparent) 1;
+}
+
+.page2-header h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 30px var(--neon-pink), 3px 3px 0 var(--neon-pink);
+    letter-spacing: 4px;
+    animation: color-shift 3s infinite;
+}
+
+@keyframes color-shift {
+
+    0%,
+    100% {
+        text-shadow: 0 0 30px var(--neon-pink), 3px 3px 0 var(--neon-pink);
+    }
+
+    50% {
+        text-shadow: 0 0 30px var(--neon-cyan), 3px 3px 0 var(--neon-cyan);
+    }
+}
+
+.filter-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-dim);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 2px;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--neon-pink);
+    border-color: var(--neon-pink);
+    color: #fff;
+    box-shadow: 0 0 20px var(--neon-pink);
+}
+
+.arcade-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.arcade-card {
+    background: var(--dark-card);
+    border: 2px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.arcade-card:hover {
+    border-color: var(--neon-pink);
+    transform: scale(1.04);
+    box-shadow: 0 10px 40px rgba(255, 0, 110, 0.3);
+}
+
+.arcade-card::before {
+    content: attr(data-rating);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--gold);
+    color: #000;
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 2px;
+    z-index: 10;
+}
+
+.arcade-thumb {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.arcade-thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.arcade-info {
+    padding: 16px;
+}
+
+.arcade-info h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.arcade-genre {
+    font-size: 11px;
+    color: var(--neon-pink);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.arcade-play-btn {
+    width: 100%;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-orange));
+    border: none;
+    color: #fff;
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    margin-top: 12px;
+}
+
+.arcade-play-btn:hover {
+    box-shadow: 0 0 20px var(--neon-pink);
+    opacity: 0.9;
+}
+
+/* Scanline effect */
+.scanlines {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom,
+            transparent 0px,
+            transparent 3px,
+            rgba(0, 0, 0, 0.05) 3px,
+            rgba(0, 0, 0, 0.05) 4px);
+    z-index: 900;
+}
+
+/* ==========================================
+     PAGE 3 — LEADERBOARD
+     Design: HOLOGRAPHIC — Blue-white, clean, data-rich
+  ========================================== */
+#page3 {
+    padding-top: 64px;
+    background: linear-gradient(135deg, #020215 0%, #050530 50%, #020215 100%);
+    min-height: 100vh;
+}
+
+.leaderboard-header {
+    padding: 60px;
+    text-align: center;
+}
+
+.leaderboard-header h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 4px;
+}
+
+.leaderboard-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+}
+
+.lb-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+}
+
+.lb-tab {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-bottom: 2px solid transparent;
+}
+
+.lb-tab.active {
+    color: var(--neon-cyan);
+    border-bottom-color: var(--neon-cyan);
+}
+
+.lb-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 100px 100px 100px;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition: all 0.3s;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.lb-row:hover {
+    background: rgba(0, 245, 255, 0.05);
+    border-color: rgba(0, 245, 255, 0.2);
+}
+
+.lb-row.top1 {
+    background: rgba(255, 215, 0, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.lb-row.top2 {
+    background: rgba(192, 192, 192, 0.05);
+    border: 1px solid rgba(192, 192, 192, 0.3);
+}
+
+.lb-row.top3 {
+    background: rgba(205, 127, 50, 0.05);
+    border: 1px solid rgba(205, 127, 50, 0.3);
+}
+
+.lb-rank {
+    font-family: 'Orbitron', monospace;
+    font-size: 18px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.lb-row.top1 .lb-rank {
+    color: var(--gold);
+    font-size: 24px;
+}
+
+.lb-row.top2 .lb-rank {
+    color: #c0c0c0;
+}
+
+.lb-row.top3 .lb-rank {
+    color: #cd7f32;
+}
+
+.lb-player {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.player-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    background: var(--dark-panel);
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.player-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.player-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.player-level {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.lb-score {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 16px;
+    color: var(--neon-cyan);
+    text-align: right;
+}
+
+.lb-wins {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    color: var(--neon-green);
+    text-align: right;
+}
+
+.lb-kd {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    color: #fff;
+    text-align: right;
+}
+
+.lb-header-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 100px 100px 100px;
+    padding: 10px 20px;
+    margin-bottom: 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ==========================================
+     PAGE 4 — STORE
+     Design: LUXURY DARK — Gold accents, premium feel
+  ========================================== */
+#page4 {
+    padding-top: 64px;
+    background: #08060e;
+    min-height: 100vh;
+}
+
+.store-hero {
+    background: linear-gradient(135deg, #0a0808 0%, #1a0a00 50%, #0a0808 100%);
+    padding: 80px 60px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.store-hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.store-hero h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(28px, 4vw, 56px);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold), #ffaa00, var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.store-hero p {
+    color: var(--text-dim);
+    font-size: 16px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.store-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    padding: 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.store-card {
+    background: linear-gradient(145deg, #0f0d15, #0a0810);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+.store-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(255, 215, 0, 0.15);
+}
+
+.store-card.featured {
+    grid-column: span 2;
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.store-thumb {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    position: relative;
+    overflow: hidden;
+}
+
+.store-thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.store-card.featured .store-thumb {
+    height: 280px;
+}
+
+.store-info {
+    padding: 24px;
+}
+
+.store-badge {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 3px 10px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.store-info h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.store-info p {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price {
+    font-family: 'Orbitron', monospace;
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--gold);
+}
+
+.price-old {
+    font-size: 14px;
+    color: var(--text-dim);
+    text-decoration: line-through;
+    margin-left: 8px;
+}
+
+.buy-btn {
+    background: linear-gradient(135deg, var(--gold), #cc8800);
+    border: none;
+    color: #000;
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 12px 28px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+.buy-btn:hover {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    transform: scale(1.05);
+}
+
+/* ==========================================
+     PAGE 5 — TOURNAMENTS
+     Design: ELECTRIC SPORTS — Diagonal cuts, dramatic
+  ========================================== */
+#page5 {
+    padding-top: 64px;
+    background: #060010;
+    min-height: 100vh;
+}
+
+.tournament-hero {
+    background: linear-gradient(135deg, #06001a 0%, #100030 100%);
+    padding: 80px 60px;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    margin-bottom: -40px;
+}
+
+.tournament-hero h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(28px, 5vw, 64px);
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 40px var(--neon-pink);
+    letter-spacing: 4px;
+}
+
+.tournament-hero p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    margin-top: 16px;
+    letter-spacing: 3px;
+}
+
+.tournaments-list {
+    padding: 80px 60px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tournament-card {
+    background: var(--dark-card);
+    border: 1px solid rgba(255, 0, 110, 0.15);
+    border-radius: 4px;
+    padding: 30px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 30px;
+    align-items: center;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.tournament-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--neon-pink);
+}
+
+.tournament-card:hover {
+    border-color: var(--neon-pink);
+    transform: translateX(8px);
+    box-shadow: -8px 0 30px rgba(255, 0, 110, 0.2);
+}
+
+.t-game-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+}
+
+.t-game-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.t-info h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.t-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.t-meta span {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.t-prize {
+    text-align: right;
+}
+
+.prize-amount {
+    font-family: 'Orbitron', monospace;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold);
+}
+
+.prize-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.join-btn {
+    display: block;
+    background: var(--neon-pink);
+    border: none;
+    color: #fff;
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 10px;
+    transition: all 0.3s;
+}
+
+.join-btn:hover {
+    background: #fff;
+    color: var(--neon-pink);
+    box-shadow: 0 0 20px var(--neon-pink);
+}
+
+.t-status {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-top: 8px;
+}
+
+.t-status.live {
+    background: rgba(57, 255, 20, 0.15);
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green);
+    animation: blink 1s infinite;
+}
+
+.t-status.upcoming {
+    background: rgba(0, 245, 255, 0.1);
+    color: var(--neon-cyan);
+    border: 1px solid var(--neon-cyan);
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: 0.5
+    }
+}
+
+/* ==========================================
+     PAGE 6 — COMMUNITY / FORUMS
+     Design: MATRIX / TERMINAL — Green text, code aesthetic
+  ========================================== */
+#page6 {
+    padding-top: 64px;
+    background: #020a02;
+    min-height: 100vh;
+}
+
+.matrix-header {
+    padding: 60px;
+    text-align: center;
+    background: linear-gradient(to bottom, #020a02, #041204);
+    border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+}
+
+.matrix-header h1 {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(28px, 4vw, 52px);
+    color: var(--neon-green);
+    text-shadow: 0 0 30px var(--neon-green);
+    letter-spacing: 6px;
+}
+
+.matrix-header p {
+    color: rgba(57, 255, 20, 0.5);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-top: 16px;
+}
+
+.forum-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    min-height: calc(100vh - 200px);
+}
+
+.forum-sidebar {
+    background: rgba(0, 20, 0, 0.5);
+    border-right: 1px solid rgba(57, 255, 20, 0.1);
+    padding: 30px 20px;
+}
+
+.forum-sidebar h3 {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--neon-green);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.7;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border: 1px solid transparent;
+    margin-bottom: 6px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+    border-color: rgba(57, 255, 20, 0.3);
+    background: rgba(57, 255, 20, 0.05);
+}
+
+.sidebar-item-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    color: rgba(57, 255, 20, 0.8);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-item-name img {
+    width: 22px;
+    height: 22px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.sidebar-count {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: rgba(57, 255, 20, 0.4);
+}
+
+.forum-main {
+    padding: 30px 40px;
+}
+
+.post-card {
+    background: rgba(0, 20, 0, 0.3);
+    border: 1px solid rgba(57, 255, 20, 0.1);
+    border-radius: 2px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.post-card:hover {
+    border-color: rgba(57, 255, 20, 0.4);
+    background: rgba(0, 20, 0, 0.5);
+    transform: translateX(4px);
+}
+
+.post-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.post-header h3 {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 15px;
+    color: var(--neon-green);
+}
+
+.post-time {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: rgba(57, 255, 20, 0.3);
+    white-space: nowrap;
+    margin-left: 20px;
+}
+
+.post-preview {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: rgba(57, 255, 20, 0.5);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.post-footer {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.post-meta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: rgba(57, 255, 20, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ==========================================
+     PAGE 7 — NEWS / BLOG
+     Design: EDITORIAL MAGAZINE — Clean editorial, bold headlines
+  ========================================== */
+#page7 {
+    padding-top: 64px;
+    background: #08050f;
+    min-height: 100vh;
+}
+
+.news-header {
+    padding: 60px;
+    border-bottom: 3px solid var(--neon-cyan);
+}
+
+.news-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.news-header h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.news-header h1 em {
+    font-style: normal;
+    color: var(--neon-cyan);
+    display: block;
+}
+
+.news-date {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 2px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.news-featured {
+    grid-row: span 2;
+    background: var(--dark-card);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.news-featured:hover {
+    opacity: 0.9;
+}
+
+.news-featured-thumb {
+    height: 350px;
+    background: linear-gradient(135deg, #100020, #200040);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.news-featured-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.news-featured-content {
+    padding: 30px;
+}
+
+.news-category {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--neon-cyan);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.news-featured-content h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: 22px;
+    color: #fff;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.news-featured-content p {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+.news-small {
+    background: var(--dark-card);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+}
+
+.news-small:hover {
+    background: #0f0e1e;
+}
+
+.news-small-thumb {
+    height: 100%;
+    background: linear-gradient(135deg, #0a0020, #1a0040);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    min-height: 120px;
+    position: relative;
+    overflow: hidden;
+}
+
+.news-small-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.news-more-icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.news-more-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.news-small-content {
+    padding: 16px;
+}
+
+.news-small-content h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    color: #fff;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.news-small-content p {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.5;
+}
+
+.news-body {
+    padding: 0 60px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.more-news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.more-news-grid>div {
+    background: var(--dark-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.more-news-grid>div:hover {
+    border-color: rgba(0, 245, 255, 0.2);
+}
+
+/* ==========================================
+     PAGE 8 — PROFILE / ACCOUNT
+     Design: DARK DASHBOARD — Stats & HUD
+  ========================================== */
+#page8 {
+    padding-top: 64px;
+    background: var(--dark-bg);
+    min-height: 100vh;
+}
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    min-height: calc(100vh - 64px);
+}
+
+.profile-sidebar {
+    background: var(--dark-card);
+    border-right: 1px solid rgba(0, 245, 255, 0.1);
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.profile-avatar-big {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    border: 3px solid var(--neon-cyan);
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+    overflow: hidden;
+}
+
+.profile-avatar-big img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.profile-username {
+    font-family: 'Orbitron', monospace;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.profile-rank {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+}
+
+.xp-bar-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.xp-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+    width: 73%;
+    border-radius: 2px;
+}
+
+.xp-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: right;
+    margin-bottom: 30px;
+}
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.pstat {
+    background: var(--dark-panel);
+    padding: 16px;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pstat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--neon-cyan);
+}
+
+.pstat-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.profile-main {
+    padding: 40px;
+}
+
+.section-label {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+}
+
+.recent-games {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.recent-game {
+    background: var(--dark-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.recent-game:hover {
+    border-color: rgba(0, 245, 255, 0.2);
+}
+
+.recent-game-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.recent-game-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.recent-game-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.recent-game-result {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.win {
+    color: var(--neon-green);
+}
+
+.loss {
+    color: var(--neon-pink);
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+}
+
+.achievement {
+    background: var(--dark-card);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: 4px;
+    padding: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.achievement:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.achievement-icon {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.achievement-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+     PAGE 9 — ABOUT
+     Design: FUTURISTIC CORPORATE — Blueprint/tech
+  ========================================== */
+#page9 {
+    padding-top: 64px;
+    background: #020818;
+    min-height: 100vh;
+}
+
+.about-hero {
+    padding: 100px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #020818, #040c22);
+}
+
+.about-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+.about-hero h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(32px, 5vw, 72px);
+    font-weight: 900;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 4px;
+}
+
+.about-hero p {
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 700px;
+    margin: 20px auto 0;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+.about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 60px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.about-card {
+    background: var(--dark-card);
+    border: 1px solid rgba(0, 245, 255, 0.1);
+    border-radius: 4px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+}
+
+.about-card:hover {
+    border-color: var(--neon-cyan);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 245, 255, 0.1);
+}
+
+.about-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 245, 255, 0.15);
+}
+
+.about-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-card h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.about-card p {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.team-card {
+    background: var(--dark-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.team-card:hover {
+    border-color: rgba(0, 245, 255, 0.2);
+    transform: translateY(-4px);
+}
+
+.team-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--dark-panel);
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    border: 2px solid rgba(0, 245, 255, 0.2);
+    overflow: hidden;
+}
+
+.team-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.team-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.team-role {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--neon-cyan);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ==========================================
+     PAGE 10 — CONTACT
+     Design: DARK MINIMAL — Stark, clean, direct
+  ========================================== */
+#page10 {
+    padding-top: 64px;
+    background: #06040c;
+    min-height: 100vh;
+}
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 64px);
+}
+
+.contact-left {
+    background: linear-gradient(135deg, #06040c, #0e0820);
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid rgba(0, 245, 255, 0.1);
+}
+
+.contact-left h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+.contact-left h1 span {
+    color: var(--neon-cyan);
+    display: block;
+}
+
+.contact-left p {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+.contact-info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.contact-item-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid var(--neon-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.contact-item-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.contact-item-text h4 {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    color: var(--neon-cyan);
+    margin-bottom: 4px;
+}
+
+.contact-item-text p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-dim);
+}
+
+.contact-right {
+    padding: 80px 60px;
+    background: #08060f;
+}
+
+.contact-right h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: 3px;
+    margin-bottom: 36px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    background: var(--dark-card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    padding: 14px 18px;
+    outline: none;
+    transition: all 0.3s;
+    appearance: none;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.05);
+}
+
+.form-textarea {
+    height: 120px;
+    resize: none;
+}
+
+.form-submit {
+    width: 100%;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+    border: none;
+    color: #000;
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.form-submit:hover {
+    opacity: 0.85;
+    box-shadow: 0 0 40px rgba(0, 245, 255, 0.3);
+    transform: scale(1.01);
+}
+
+/* ==========================================
+     FOOTER
+  ========================================== */
+.site-footer {
+    background: #020208;
+    border-top: 1px solid rgba(0, 245, 255, 0.1);
+    padding: 60px 60px 30px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-brand h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 22px;
+    font-weight: 900;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+    letter-spacing: 3px;
+}
+
+.footer-brand p {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+.footer-col h4 {
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    color: var(--neon-cyan);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li button {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 0;
+}
+
+.footer-col ul li button:hover {
+    color: var(--neon-cyan);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-link {
+    width: 36px;
+    height: 36px;
+    background: var(--dark-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.social-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.social-link:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 245, 255, 0.1);
+}
+
+/* Notification bar */
+.notif-bar {
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-orange));
+    padding: 10px;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    color: #fff;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.notif-close {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neon-cyan);
+    border-radius: 3px;
+}
+/* ==========================================================
+   RESPONSIVE MEDIA QUERIES
+   Breakpoints used (same as Bootstrap 5 grid system):
+
+   Mobile              : 0        - 575.98px
+   Mobile Landscape    : 576px    - 767.98px
+   Tablet (Tab)        : 768px    - 991.98px
+   Large (Laptop)      : 992px    - 1199.98px
+   Extra Large (XL)    : 1200px   - 1399.98px
+   Extra Extra Large   : 1400px   and above
+
+   Written mobile-first collapsing cascade (max-width, largest
+   to smallest) so smaller screens inherit + override the
+   larger screen's rules.
+   ========================================================== */
+
+
+/* ==========================================================
+   1400px and up — EXTRA EXTRA LARGE (XXL)
+   This is the default/base design already in styles.css above.
+   No overrides needed here — everything above this comment
+   IS the XXL styling. Kept as a marker only.
+   ========================================================== */
+
+
+/* ==========================================================
+   1200px - 1399.98px — EXTRA LARGE (XL)
+   ========================================================== */
+@media (max-width: 1399.98px) {
+
+    .arcade-grid {
+        max-width: 1100px;
+    }
+
+    .store-grid {
+        max-width: 1100px;
+    }
+}
+
+
+/* ==========================================================
+   992px - 1199.98px — LARGE (Laptop / small desktop)
+   ========================================================== */
+@media (max-width: 1199.98px) {
+
+    /* Section side paddings tightened a bit */
+    .home-games-section,
+    .about-content,
+    .tournaments-list,
+    .news-body {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .games-grid-home {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .arcade-grid {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 40px;
+    }
+
+    .store-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 40px;
+    }
+
+    .store-card.featured {
+        grid-column: span 2;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+        row-gap: 30px;
+    }
+
+    .footer-brand {
+        grid-column: span 3;
+    }
+}
+
+
+/* ==========================================================
+   768px - 991.98px — TABLET (Tab)
+   ========================================================== */
+@media (max-width: 991.98px) {
+
+    /* ----- Global nav ----- */
+    .global-nav {
+        padding: 0 20px;
+        height: 58px;
+    }
+
+    #page1,
+    #page2,
+    #page3,
+    #page4,
+    #page5,
+    #page6,
+    #page7,
+    #page8,
+    #page9,
+    #page10 {
+        padding-top: 58px;
+    }
+
+    .video-hero {
+        height: calc(100vh - 58px);
+    }
+
+    .nav-logo {
+        font-size: 18px;
+    }
+
+    .nav-links {
+        gap: 2px;
+        overflow-x: auto;
+        max-width: 65vw;
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links li a,
+    .nav-links li button {
+        font-size: 11px;
+        padding: 8px 10px;
+        white-space: nowrap;
+    }
+
+    /* ----- Section paddings ----- */
+    .home-games-section,
+    .about-hero,
+    .about-content,
+    .store-hero,
+    .tournament-hero,
+    .tournaments-list,
+    .news-header,
+    .news-body,
+    .leaderboard-header,
+    .page2-header,
+    .matrix-header {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .stats-bar {
+        padding: 30px;
+    }
+
+    /* ----- Grids: drop to 2 columns ----- */
+    .games-grid-home,
+    .store-grid,
+    .about-grid,
+    .recent-games {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .store-card.featured {
+        grid-column: span 2;
+    }
+
+    .arcade-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 30px;
+        gap: 16px;
+    }
+
+    .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .stat-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 16px;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .more-news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* ----- Two-column layouts stack ----- */
+    .forum-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .forum-sidebar {
+        border-right: none;
+        border-bottom: 1px solid rgba(57, 255, 20, 0.1);
+    }
+
+    .forum-main {
+        padding: 30px 20px;
+    }
+
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-sidebar {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+        padding: 30px 20px;
+    }
+
+    .profile-main {
+        padding: 30px 20px;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .contact-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+        padding: 50px 30px;
+    }
+
+    .contact-right {
+        padding: 50px 30px;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+        padding: 0 30px;
+    }
+
+    .news-featured {
+        grid-row: auto;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 30px;
+    }
+
+    .footer-brand {
+        grid-column: span 2;
+    }
+
+    .site-footer {
+        padding: 40px 30px 24px;
+    }
+
+    /* Leaderboard: drop win/kd columns, keep rank / player / score */
+    .lb-row,
+    .lb-header-row {
+        grid-template-columns: 44px 1fr 80px;
+    }
+
+    .lb-wins,
+    .lb-kd,
+    .lb-header-row span:nth-child(4),
+    .lb-header-row span:nth-child(5) {
+        display: none;
+    }
+}
+
+
+/* ==========================================================
+   576px - 767.98px — MOBILE LANDSCAPE
+   ========================================================== */
+@media (max-width: 767.98px) {
+
+    /* ----- Nav ----- */
+    .nav-links {
+        max-width: 55vw;
+    }
+
+    .nav-links li a,
+    .nav-links li button {
+        font-size: 10px;
+        padding: 6px 8px;
+    }
+
+    .nav-logo {
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+
+    /* ----- Hero ----- */
+    .hero-badge {
+        font-size: 10px;
+        padding: 5px 14px;
+    }
+
+    .hero-sub {
+        font-size: 14px;
+        letter-spacing: 2px;
+        margin-bottom: 28px;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        width: 80%;
+        gap: 12px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        padding: 12px 20px;
+    }
+
+    .video-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+
+    .video-arrow.left {
+        left: 12px;
+    }
+
+    .video-arrow.right {
+        right: 12px;
+    }
+
+    .slide-label {
+        bottom: 60px;
+        font-size: 11px;
+    }
+
+    /* ----- Section paddings / titles ----- */
+    .home-games-section,
+    .about-hero,
+    .about-content,
+    .store-hero,
+    .tournament-hero,
+    .tournaments-list,
+    .news-header,
+    .news-body,
+    .leaderboard-header,
+    .page2-header,
+    .matrix-header {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .home-games-section,
+    .about-content {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .section-title {
+        margin-bottom: 36px;
+    }
+
+    .stats-bar {
+        padding: 24px 20px;
+        gap: 20px;
+    }
+
+    /* ----- Grids: 1 column for card grids ----- */
+    .games-grid-home,
+    .store-grid,
+    .about-grid,
+    .team-grid,
+    .recent-games,
+    .arcade-grid {
+        grid-template-columns: 1fr;
+        padding: 24px 20px;
+        gap: 16px;
+    }
+
+    .store-card.featured {
+        grid-column: span 1;
+    }
+
+    .store-card.featured .store-thumb {
+        height: 200px;
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* ----- Leaderboard container ----- */
+    .leaderboard-container {
+        padding: 0 20px 60px;
+    }
+
+    .lb-tabs {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .lb-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .lb-tab {
+        padding: 12px 18px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    /* ----- Tournament card stacks ----- */
+    .tournament-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 24px 20px;
+        gap: 16px;
+    }
+
+    .t-game-icon {
+        margin: 0 auto;
+    }
+
+    .t-meta {
+        justify-content: center;
+    }
+
+    .t-prize {
+        text-align: center;
+    }
+
+    /* ----- News small item stacks ----- */
+    .news-small {
+        grid-template-columns: 1fr;
+    }
+
+    /* ----- More News: one card per row on mobile screens ----- */
+    .more-news-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .news-small-thumb {
+        min-height: 160px;
+    }
+
+    .news-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    /* ----- Contact ----- */
+    .contact-left,
+    .contact-right {
+        padding: 40px 20px;
+    }
+
+    .contact-item {
+        flex-wrap: wrap;
+    }
+
+    /* ----- Footer ----- */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .footer-brand {
+        grid-column: span 1;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .site-footer {
+        padding: 36px 20px 20px;
+    }
+}
+
+
+/* ==========================================================
+   0 - 575.98px — MOBILE
+   ========================================================== */
+@media (max-width: 575.98px) {
+
+    /* ----- Nav: shrink further, allow scroll ----- */
+    .global-nav {
+        padding: 0 14px;
+        height: 52px;
+    }
+
+    #page1,
+    #page2,
+    #page3,
+    #page4,
+    #page5,
+    #page6,
+    #page7,
+    #page8,
+    #page9,
+    #page10 {
+        padding-top: 52px;
+    }
+
+    .video-hero {
+        height: calc(100vh - 52px);
+    }
+
+    .nav-logo {
+        font-size: 13px;
+    }
+
+    .nav-links {
+        max-width: 62vw;
+        gap: 0;
+    }
+
+    .nav-links li a,
+    .nav-links li button {
+        font-size: 9px;
+        padding: 6px 6px;
+        letter-spacing: 1px;
+    }
+
+    /* ----- Hero content ----- */
+    .video-content {
+        padding: 0 16px;
+    }
+
+    .hero-badge {
+        font-size: 9px;
+        padding: 4px 12px;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
+    }
+
+    .hero-title {
+        margin-bottom: 6px;
+    }
+
+    .hero-sub {
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 24px;
+    }
+
+    .hero-btns {
+        width: 100%;
+    }
+
+    .video-dots {
+        bottom: 16px;
+    }
+
+    .video-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .slide-label {
+        bottom: 46px;
+        font-size: 10px;
+        letter-spacing: 2px;
+        padding: 0 16px;
+    }
+
+    /* ----- Section titles / paddings ----- */
+    .section-title {
+        margin-bottom: 28px;
+    }
+
+    .home-games-section,
+    .about-hero,
+    .about-content,
+    .store-hero,
+    .tournament-hero,
+    .tournaments-list,
+    .news-header,
+    .news-body,
+    .leaderboard-header,
+    .page2-header,
+    .matrix-header {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .home-games-section,
+    .about-content {
+        padding-top: 44px;
+        padding-bottom: 44px;
+    }
+
+    .about-hero,
+    .store-hero,
+    .tournament-hero {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .leaderboard-header,
+    .page2-header,
+    .matrix-header {
+        padding-top: 40px;
+        padding-bottom: 20px;
+    }
+
+    /* ----- Grids ----- */
+    .games-grid-home,
+    .store-grid,
+    .about-grid,
+    .team-grid,
+    .recent-games,
+    .arcade-grid {
+        padding: 20px 16px;
+        gap: 14px;
+    }
+
+    .game-card-thumb {
+        height: 150px;
+    }
+
+    .arcade-thumb {
+        height: 120px;
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .stats-bar {
+        grid-template-columns: 1fr 1fr;
+        padding: 20px 16px;
+        gap: 16px;
+    }
+
+    .stat-num {
+        font-size: 30px;
+    }
+
+    /* ----- Filter row ----- */
+    .filter-row {
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .filter-btn {
+        font-size: 11px;
+        padding: 8px 16px;
+    }
+
+    /* ----- Leaderboard: rank + player only, score under name ----- */
+    .leaderboard-container {
+        padding: 0 12px 40px;
+    }
+
+    .lb-row,
+    .lb-header-row {
+        grid-template-columns: 32px 1fr 60px;
+        padding: 12px 10px;
+        gap: 6px;
+    }
+
+    .lb-rank {
+        font-size: 14px;
+    }
+
+    .lb-row.top1 .lb-rank {
+        font-size: 18px;
+    }
+
+    .player-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 15px;
+    }
+
+    .player-name {
+        font-size: 13px;
+    }
+
+    .player-level {
+        font-size: 10px;
+    }
+
+    .lb-score {
+        font-size: 13px;
+    }
+
+    /* ----- Forum / Profile / Contact side padding ----- */
+    .forum-sidebar,
+    .profile-sidebar {
+        padding: 24px 16px;
+    }
+
+    .forum-main,
+    .profile-main {
+        padding: 24px 16px;
+    }
+
+    .profile-avatar-big {
+        width: 90px;
+        height: 90px;
+        font-size: 44px;
+    }
+
+    .profile-stats {
+        gap: 8px;
+    }
+
+    .contact-left,
+    .contact-right {
+        padding: 32px 16px;
+    }
+
+    .contact-info-items {
+        gap: 14px;
+    }
+
+    /* ----- Tournament card ----- */
+    .tournament-card {
+        padding: 20px 16px;
+    }
+
+    .prize-amount {
+        font-size: 22px;
+    }
+
+    /* ----- News body ----- */
+    .news-grid {
+        padding: 0 16px;
+    }
+
+    .news-featured-thumb {
+        height: 220px;
+        font-size: 60px;
+    }
+
+    .news-featured-content {
+        padding: 20px;
+    }
+
+    .news-featured-content h2 {
+        font-size: 18px;
+    }
+
+    /* ----- Footer ----- */
+    .site-footer {
+        padding: 30px 16px 16px;
+    }
+
+    .social-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
